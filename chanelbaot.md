@@ -18,3 +18,28 @@
 
 curl -X POST "https://api.telegram.org/botXXX:YYYY/sendMessage" -d "chat_id=-zzzzzzzzzz&text=my sample text"
 Если вы пропустите шаг 2, обновления для группы вы не найдете. Кроме тог
+
+
+
+# Отправка сообщений в приватный канал ботом телеграм
+
+* создать публичный канал
+* добавить в канал бота от которого будут посылаться сообщения
+* перейти по ссылке:
+ 
+ ```
+ https://api.telegram.org/bot255854462:ABGlRhNICpcjb1EUbvMsagKyxPv3Z1FPtXA/sendMessage?chat_id=-1221196120949&text=test_message_string
+ ```
+* в ответе придет id канала
+ 
+ ```
+ {"ok":true,"result":{"message_id":246,"from":{"id":225805428,"first_name":"Example","username":"exmpleBot"},"chat":{"id":-0221164862523,"title":"Example","type":"supergroup"},"date":1485915767,"text":"test_message_string"}}
+ ```
+ здесь id канала **-0221164862523**
+ 
+* сделать канал приватным
+* отправлять сообщения так:
+ 
+ ```
+ https://api.telegram.org/bot[ТОКЕН_БОТА]/sendMessage?chat_id=@[ID_КАНАЛА]&text=тест.
+ ```
